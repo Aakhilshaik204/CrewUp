@@ -1,93 +1,62 @@
-# CrewUp — College Sports & Gaming Matchmaking Platform
+<div align="center">
+  <img src="./client/public/logo.jpeg" alt="CrewUp Logo" width="150" />
+  <h1>🚀 CrewUp</h1>
+  <p><strong>The Ultimate College Sports & Gaming Matchmaking Platform</strong></p>
+</div>
 
-## 🚀 Getting Started
+<br/>
 
-### Prerequisites
-- Node.js 18+
-- MongoDB Atlas account
-- Clerk account (https://clerk.com)
+## 🎯 What is CrewUp?
+
+CrewUp is an exclusive campus platform designed to connect college students for sports, gaming, and equipment sharing. No more begging in WhatsApp groups or struggling to find that 11th player for your cricket match or a 4th player for your BGMI squad.
+
+With CrewUp, you can instantly:
+- 🏏 **Create & Join Matches**: Host football matches, cricket nets, or VALORANT lobbies.
+- 💬 **Live Squad Chat**: Automatically get placed into a real-time chat room with your teammates as soon as you join an activity.
+- 🎮 **Gaming Profiles**: Show off your in-game IGNs and ranks.
+- 🎒 **Borrow & Lend**: Request sports equipment (like a basketball or cricket bat) from peers on campus.
+- 🔐 **Private Crews**: Host private lobbies with secret invite codes.
+- 🔔 **Instant Notifications**: Get alerted when players join your match or request your equipment.
+
+---
+
+## 🛠️ Technology Stack
+
+CrewUp is built using a modern, scalable, and fully responsive tech stack to deliver a premium user experience:
+
+- **Frontend**: React 18, Vite, Tailwind CSS v3, Framer Motion
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB Atlas (Mongoose)
+- **Real-time Engine**: Socket.io (for live chat and instant feed updates)
+- **Authentication**: Clerk (Google OAuth & Email login)
+- **UI & UX**: Lucide React Icons, React Hot Toast
 
 ---
 
 ## 📁 Project Structure
 
-```
+```text
 CrewUp/
-├── client/     # React (Vite) + Tailwind CSS frontend
-└── server/     # Node.js + Express + Socket.io backend
+├── client/     # React frontend
+│   ├── src/
+│   │   ├── api/          # Axios API wrappers
+│   │   ├── components/   # Reusable UI elements (Navbar, Cards, Chat)
+│   │   ├── pages/        # Main route views (Feed, Dashboard, Landing)
+│   │   └── contexts/     # Socket and Notification context providers
+├── server/     # Node.js backend
+│   ├── models/       # Mongoose schemas (User, Activity, Message, etc.)
+│   ├── controllers/  # API route logic
+│   ├── routes/       # Express route definitions
+│   └── socket/       # Socket.io event handlers
+└── README.md
 ```
 
 ---
 
-## ⚙️ Setup
+## ⚖️ License & Copyright
 
-### 1. Server Setup
+**Copyright (c) 2026 Aakhil Shaik. All Rights Reserved.**
 
-```bash
-cd server
-copy .env.example .env    # Fill in your values
-npm install
-npm run dev
-```
+This project, including all of its source code, design assets, and documentation, is proprietary and strictly confidential. 
 
-### 2. Client Setup
-
-```bash
-cd client
-copy .env.example .env    # Fill in your values
-npm install
-npm run dev
-```
-
----
-
-## 🔑 Environment Variables
-
-### `server/.env`
-| Variable | Description |
-|----------|-------------|
-| `PORT` | Server port (default: 5000) |
-| `MONGODB_URI` | MongoDB Atlas connection string |
-| `CLERK_SECRET_KEY` | From Clerk Dashboard → API Keys |
-| `CLIENT_URL` | Frontend URL (default: http://localhost:5173) |
-
-### `client/.env`
-| Variable | Description |
-|----------|-------------|
-| `VITE_CLERK_PUBLISHABLE_KEY` | From Clerk Dashboard → API Keys |
-| `VITE_API_URL` | Backend URL (default: http://localhost:5000) |
-
----
-
-## 🛠 Tech Stack
-
-| Layer | Tech |
-|-------|------|
-| Frontend | React 18, Vite, Tailwind CSS v3 |
-| Auth | Clerk (Google + Email) |
-| Backend | Node.js, Express |
-| Database | MongoDB Atlas, Mongoose |
-| Realtime | Socket.io |
-| Animation | Framer Motion |
-| Icons | Lucide React |
-| Notifications | react-hot-toast |
-
----
-
-## 📋 Development Phases
-
-- [x] Phase 1 — Auth, Profile, Backend Setup
-- [ ] Phase 2 — Activity System (auto-scaffolded)
-- [ ] Phase 3 — Join/Leave, My Activities
-- [ ] Phase 4 — Realtime Chat
-- [ ] Phase 5 — Notifications & Waitlist
-- [ ] Phase 6 — Admin Panel & Reports
-- [ ] Phase 7 — Polish & Deployment
-
----
-
-## 🚢 Deployment
-
-- **Frontend**: Vercel — set `VITE_CLERK_PUBLISHABLE_KEY` and `VITE_API_URL` in Vercel env
-- **Backend**: Render / Railway — set all `server/.env` variables
-- **Database**: MongoDB Atlas (shared cluster)
+**No license is granted to any person or entity** to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this Software in any capacity. Unauthorized copying, distribution, or modification of this project via any medium is strictly prohibited.
