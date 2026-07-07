@@ -20,5 +20,6 @@ export const SPORT_IMAGES = {
   'Clash of Clans': 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80',
   'Among Us': 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80',
   Carrom: 'https://syncoshop.com/cdn/shop/articles/Choose_right_carrom_board_63adee8a-d00a-4e8c-a287-bebba3f2eeba.jpg?v=1742807999',
+  'Real Cricket': 'https://assets.krafton.in/files/Image_1b.jpg',
   default: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
 };

@@ -45,7 +45,7 @@ const PARTICLES = [
   { x: 60, y: 90, size: 5, delay: 1.2, color: '#f9731666' },
 ];
 
-const ROTATING_WORDS = ['Cricket', 'BGMI', 'Football', 'Badminton', 'Valorant', 'Basketball'];
+const ROTATING_WORDS = ['Cricket', 'BGMI', 'Football', 'Badminton', 'Valorant', 'Basketball', 'Real Cricket'];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -69,6 +69,7 @@ const LandingPage = () => {
     { sport: 'Badminton', title: 'Doubles Practice', venue: 'Indoor Court 2', players: '2 / 4', time: '45 mins', miniTitle: 'Singles Match', filled: 1, total: 2 },
     { sport: 'Valorant', title: 'Ranked Push', venue: 'Mumbai Server', players: '4 / 5', time: 'Starting now', miniTitle: 'Swiftplay', filled: 2, total: 5 },
     { sport: 'Basketball', title: '3v3 Pickup', venue: 'North Court', players: '5 / 6', time: '1h 15m', miniTitle: 'Shootaround', filled: 1, total: 3 },
+    { sport: 'Real Cricket', title: 'Tournament Final', venue: 'Online Lobby', players: '1 / 2', time: '10 mins', miniTitle: 'Friendly Match', filled: 1, total: 2 },
   ];
   const activeMock = MOCK_CARDS[wordIdx];
 
@@ -124,7 +125,7 @@ const LandingPage = () => {
               <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 mb-8">
                 <span className="flex items-center gap-2 bg-orange-100 border border-orange-200 text-orange-600 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest">
                   <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse" />
-                  Live for college students
+                  Live for SRM AP students
                 </span>
               </motion.div>
 
@@ -166,7 +167,7 @@ const LandingPage = () => {
               </motion.div>
 
               <motion.p variants={fadeUp} className="text-slate-600 text-lg leading-relaxed mb-10 max-w-xl">
-                CrewUp connects college students for sports and gaming. Create an activity, fill your squad, and play — no more begging in WhatsApp groups.
+                CrewUp exclusively connects SRM AP students for sports and gaming. Create an activity, fill your squad, and play — no more begging in WhatsApp groups.
               </motion.p>
 
               {/* CTAs */}

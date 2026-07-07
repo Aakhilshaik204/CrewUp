@@ -44,7 +44,7 @@ const LoginGate = ({ isOpen, onClose, action = 'continue' }) => (
 
             <h2 className="font-display font-bold text-xl text-slate-900 mb-2">Sign in to {action}</h2>
             <p className="text-slate-500 text-sm mb-6">
-              Join CrewUp to find teammates, create activities, and connect with students on your campus.
+              Join CrewUp to find teammates, create activities, and connect exclusively with students at SRM AP.
             </p>
 
             <div className="space-y-3">

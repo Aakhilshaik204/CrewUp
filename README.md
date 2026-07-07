@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./client/public/logo.jpeg" alt="CrewUp Logo" width="180" />
   <h1>🚀 CrewUp</h1>
-  <p><strong>The Ultimate College Sports, Gaming & Equipment Matchmaking Platform</strong></p>
+  <p><strong>The Ultimate SRM AP Sports, Gaming & Equipment Matchmaking Platform</strong></p>
   
   <p>
     <img src="https://img.shields.io/badge/React-18.x-blue.svg" alt="React" />
@@ -28,7 +28,7 @@
 
 ## 🎯 About CrewUp
 
-**CrewUp** is an exclusive, highly-interactive campus platform designed to connect college students for sports, gaming, and equipment sharing. It completely eliminates the friction of finding players on campus—no more begging in WhatsApp groups or struggling to find that 11th player for a cricket match or a 4th player for a BGMI squad.
+**CrewUp** is an exclusive, highly-interactive campus platform designed exclusively to connect SRM AP students for sports, gaming, and equipment sharing. It completely eliminates the friction of finding players on campus—no more begging in WhatsApp groups or struggling to find that 11th player for a cricket match or a 4th player for a BGMI squad.
 
 ---
 

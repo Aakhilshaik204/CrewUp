@@ -1,6 +1,6 @@
 // Activity categories
 export const SPORTS_CATEGORIES = ['Cricket', 'Football', 'Basketball', 'Volleyball', 'Badminton', 'Chess', 'Carrom', 'Other'];
-export const GAMING_CATEGORIES = ['BGMI', 'Valorant', 'Free Fire', 'COD Mobile', 'EA FC', 'Other'];
+export const GAMING_CATEGORIES = ['BGMI', 'Valorant', 'Free Fire', 'COD Mobile', 'EA FC', 'Real Cricket', 'Other'];
 export const ALL_CATEGORIES = [...SPORTS_CATEGORIES, ...GAMING_CATEGORIES];
 
 // Category icons (emoji fallback)
@@ -17,6 +17,7 @@ export const CATEGORY_ICONS = {
   'Free Fire': '🔥',
   'COD Mobile': '🔫',
   'EA FC': '⚽',
+  'Real Cricket': '🏏',
   'Other': '🎯',
 };
 
@@ -34,6 +35,7 @@ export const CATEGORY_COLORS = {
   'Free Fire': 'from-orange-500/20 to-red-500/10 border-orange-500/20',
   'COD Mobile': 'from-green-600/20 to-lime-500/10 border-green-600/20',
   'EA FC': 'from-blue-600/20 to-indigo-500/10 border-blue-600/20',
+  'Real Cricket': 'from-sky-500/20 to-blue-500/10 border-sky-500/20',
 };
 
 // Activity statuses

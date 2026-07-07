@@ -18,7 +18,7 @@ const Footer = () => (
             </div>
           </Link>
           <p className="text-slate-400 text-base leading-relaxed mb-8 max-w-md">
-            The ultimate campus platform for finding teammates, hosting matches, and borrowing equipment. Built for college students, by college students.
+            The ultimate campus platform for finding teammates, hosting matches, and borrowing equipment. Built exclusively for SRM AP students, by SRM AP students.
           </p>
           <div className="flex items-center gap-4">
             <a href="#" className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all shadow-sm">
