@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 font-sans;
+    min-height: 100vh;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white border-2 border-slate-200 shadow-sm rounded-xl;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-slate-300 cursor-pointer;
+  }
+
+  .card-featured {
+    @apply bg-white border-2 border-slate-200 shadow-lg rounded-2xl;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-primary-600 text-white font-bold px-5 py-2.5 text-sm transition-all duration-200 hover:bg-primary-500 hover:shadow-lg hover:shadow-glow active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider;
+    transform: skewX(-8deg);
+    border-radius: 0.25rem;
+  }
+  .btn-primary > * { transform: skewX(8deg); }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-slate-800 text-white font-bold px-5 py-2.5 text-sm transition-all duration-200 hover:bg-slate-700 active:scale-95 uppercase tracking-wider;
+    transform: skewX(-8deg);
+    border-radius: 0.25rem;
+  }
+  .btn-secondary > * { transform: skewX(8deg); }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-primary-200 text-primary-600 font-bold px-5 py-2.5 text-sm transition-all duration-200 hover:bg-primary-50 hover:border-primary-400 active:scale-95 uppercase tracking-wider;
+    transform: skewX(-8deg);
+    border-radius: 0.25rem;
+  }
+  .btn-outline > * { transform: skewX(8deg); }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 text-slate-500 font-bold rounded-md px-4 py-2 text-sm transition-all duration-200 hover:bg-slate-200 hover:text-slate-800 uppercase tracking-wider;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 bg-red-500 text-white font-bold px-5 py-2.5 text-sm transition-all duration-200 hover:bg-red-600 active:scale-95 uppercase tracking-wider;
+    transform: skewX(-8deg);
+    border-radius: 0.25rem;
+  }
+  .btn-danger > * { transform: skewX(8deg); }
+
+  /* ── Form Fields ── */
+  .input-field {
+    @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-400;
+  }
+
+  /* ── Badge / Status ── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-sm text-xs font-bold uppercase tracking-wider border;
+  }
+
+  .badge-open {
+    @apply badge bg-primary-100 text-primary-700 border-primary-300;
+  }
+
+  .badge-full {
+    @apply badge bg-slate-800 text-white border-slate-700;
+  }
+
+  .badge-ongoing {
+    @apply badge bg-blue-100 text-blue-700 border-blue-300;
+  }
+
+  .badge-cancelled {
+    @apply badge bg-red-100 text-red-700 border-red-300;
+  }
+
+  .badge-completed {
+    @apply badge bg-slate-100 text-slate-600 border-slate-300;
+  }
+
+  /* ── Page Layout ── */
+  .page-container {
+    @apply w-[95%] max-w-[1600px] mx-auto py-8;
+  }
+
+  /* ── Section headings ── */
+  .section-title {
+    @apply text-xl font-bold text-slate-900 font-display;
+  }
+
+  .section-subtitle {
+    @apply text-sm text-slate-500 mt-0.5;
+  }
+
+  /* ── Stat Card ── */
+  .stat-card {
+    @apply card p-5 flex items-center gap-4;
+  }
+
+  /* ── Image Card ── */
+  .img-card {
+    @apply card overflow-hidden;
+  }
+
+  /* ── Nav Tabs ── */
+  .pill-tabs {
+    @apply flex gap-2 bg-white border-2 border-slate-200 p-1 rounded-xl;
+  }
+
+  .pill-tab {
+    @apply flex-1 py-2 rounded-lg text-sm font-bold uppercase tracking-wider text-slate-500 hover:bg-slate-100 transition-all;
+  }
+
+  .pill-tab-active {
+    @apply flex-1 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-slate-800 text-white shadow-md transition-all;
+  }
+
+  /* ── Gradient text ── */
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent;
+  }
+
+  /* ── Scrollbar ── */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .shadow-card-lg {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  }
+}
