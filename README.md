@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./client/public/logo.jpeg" alt="CrewUp Logo" width="150" style="border-radius: 20px; margin-bottom: 20px;" />
+  <img src="client/public/logo.jpeg" alt="CrewUp Logo" width="150" />
   <h1>🚀 CrewUp</h1>
   <p><strong>The Ultimate Campus Matchmaking Platform for Sports, Gaming & Gear</strong></p>
   

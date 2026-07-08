@@ -35,7 +35,7 @@ export const useSyncUser = () => {
       } finally {
         clearTimeout(timeoutId);
         if (toastId) {
-          toast.success('Server is awake! 🚀', { id: toastId });
+          toast.success('Server is awake! 🚀', { id: toastId, duration: 3000 });
         }
       }
     };
