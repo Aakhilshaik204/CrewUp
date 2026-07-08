@@ -572,7 +572,7 @@ const ActivityDetailPage = () => {
         {/* Sidebar */}
         <div className="space-y-4">
           {/* Crew Code Card */}
-          {activity.crewCode && (
+          {activity.crewCode && activity.visibility === 'Private' && (
             <div className="card p-5 bg-gradient-to-br from-primary-50 to-white border-primary-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-3 opacity-10">
                 <Users className="w-16 h-16 text-primary-600" />
