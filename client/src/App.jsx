@@ -90,9 +90,7 @@ const App = () => {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl flex items-center justify-center">
-            <span className="text-white font-bold text-lg">C</span>
-          </div>
+          <img src="/logo.jpeg" alt="CrewUp" className="w-12 h-12 rounded-xl object-cover shadow-sm" />
           <Spinner size="md" />
         </div>
       </div>

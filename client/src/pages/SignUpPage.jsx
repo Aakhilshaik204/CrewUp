@@ -9,10 +9,8 @@ const SignUpPage = () => (
     <div className="relative z-10 w-full max-w-md">
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-2 mb-4">
-          <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl flex items-center justify-center shadow-indigo">
-            <span className="text-white font-bold">C</span>
-          </div>
-          <span className="font-display font-bold text-2xl text-slate-900">Crew<span className="text-indigo-600">Up</span></span>
+          <img src="/logo.jpeg" alt="CrewUp" className="w-10 h-10 rounded-xl object-cover shadow-sm" />
+          <span className="font-display font-bold text-2xl text-slate-900">Crew<span className="text-primary-600">Up</span></span>
         </div>
         <h1 className="font-display font-bold text-2xl text-slate-900 mb-1">Join CrewUp</h1>
         <p className="text-slate-500 text-sm">Create your account and find your squad</p>
@@ -31,8 +29,8 @@ const SignUpPage = () => (
             headerSubtitle: 'hidden',
             socialButtonsBlockButton: 'border border-slate-200 rounded-xl font-medium',
             formFieldInput: 'rounded-xl border-slate-200 text-slate-800',
-            formButtonPrimary: 'bg-indigo-600 hover:bg-indigo-700 rounded-xl',
-            footerActionLink: 'text-indigo-600',
+            formButtonPrimary: 'bg-primary-600 hover:bg-primary-700 rounded-xl',
+            footerActionLink: 'text-primary-600',
           },
         }}
       />
