@@ -54,4 +54,32 @@ export const initCronJobs = () => {
       console.error('Error auto-starting activities:', error);
     }
   });
+
+  // Run every 30 minutes to auto-complete activities that started more than 2 hours ago
+  cron.schedule('*/30 * * * *', async () => {
+    try {
+      const ongoingActivities = await Activity.find({ status: 'Ongoing' });
+      const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000);
+      
+      let completedCount = 0;
+      for (const act of ongoingActivities) {
+        if (!act.date || !act.time) continue;
+        
+        const targetDate = new Date(act.date);
+        const [hours, minutes] = act.time.split(':');
+        targetDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
+        
+        if (targetDate <= twoHoursAgo) {
+          act.status = 'Completed';
+          await act.save();
+          completedCount++;
+        }
+      }
+      if (completedCount > 0) {
+        console.log(`Auto-completed ${completedCount} old activities`);
+      }
+    } catch (error) {
+      console.error('Error auto-completing activities:', error);
+    }
+  });
 };
