@@ -246,16 +246,25 @@ const ActivityDetailPage = () => {
 
   const handleShare = async () => {
     const url = window.location.href;
-    let text = `Join my ${activity.category} activity "${activity.title}" on CrewUp!`;
+    
+    // Using *asterisks* for bold text (WhatsApp/Telegram style)
+    let text = `🔥 *${activity.title}*\n\n`;
+    text += `Hey! I'm hosting a ${activity.category} session and I'd love for you to join my crew. 🚀\n\n`;
+    text += `📍 *Venue:* ${activity.venue}\n`;
+    text += `📅 *Date:* ${formatDate(activity.date)} at ${activity.time}\n`;
+    text += `👥 *Players:* ${activity.currentPlayers}/${activity.maxPlayers}\n\n`;
     
     if (activity.visibility === 'Private') {
-      text += `\n\nIt's a private crew! Use invite code: ${activity.crewCode} to join.`;
+      text += `🔒 *This is a Private Crew!*\n`;
+      text += `Use the Invite Code: *${activity.crewCode}* to join.\n\n`;
     }
     
+    text += `👇 Click the link below to view details and join:\n`;
+
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'CrewUp Activity',
+          title: `Join my ${activity.category} crew!`,
           text: text,
           url: url
         });
@@ -263,7 +272,7 @@ const ActivityDetailPage = () => {
         console.log('Error sharing:', err);
       }
     } else {
-      navigator.clipboard.writeText(`${text}\n\nLink: ${url}`);
+      navigator.clipboard.writeText(`${text}${url}`);
       toast.success('Activity info copied to clipboard!');
     }
   };
