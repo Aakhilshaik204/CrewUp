@@ -21,6 +21,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       signUpFallbackRedirectUrl="/dashboard"
       signInForceRedirectUrl="/dashboard"
       signUpForceRedirectUrl="/dashboard"
+      appearance={{
+        layout: {
+          logoImageUrl: '/logo.jpeg',
+        },
+        variables: {
+          colorPrimary: '#f97316',
+        }
+      }}
     >
       <BrowserRouter>
         <App />
