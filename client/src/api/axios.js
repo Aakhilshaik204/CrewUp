@@ -29,6 +29,16 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const message = error.response?.data?.message || 'Something went wrong';
+    
+    // Automatically sign out banned users
+    if (error.response?.status === 403 && message.toLowerCase().includes('banned')) {
+      if (window.Clerk) {
+        window.Clerk.signOut(() => {
+          window.location.href = '/sign-in';
+        });
+      }
+    }
+
     return Promise.reject({ ...error, message });
   }
 );
