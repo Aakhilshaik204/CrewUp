@@ -8,26 +8,30 @@ const CountdownTimer = ({ date, time, status, onExpire }) => {
   useEffect(() => {
     if (!date || !time) return;
 
-    // Combine date and time to create target Date object
     const targetDate = new Date(date);
     const [hours, minutes] = time.split(':');
     targetDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
+
+    let hasExpired = false;
 
     const calculateTimeLeft = () => {
       const now = new Date();
       const diff = targetDate.getTime() - now.getTime();
 
-      if (status === 'Ongoing') {
+      if (status === 'Ongoing' || status === 'Completed' || status === 'Cancelled') {
         setIsStarted(true);
         setTimeLeft('Activity has started!');
-        return;
+        return true;
       }
 
       if (diff <= 0) {
         setIsStarted(true);
         setTimeLeft('Activity has started!');
-        if (onExpire) onExpire();
-        return;
+        if (!hasExpired) {
+          hasExpired = true;
+          if (onExpire) onExpire();
+        }
+        return true;
       }
 
       setIsStarted(false);
@@ -36,10 +40,16 @@ const CountdownTimer = ({ date, time, status, onExpire }) => {
       const s = Math.floor((diff % (1000 * 60)) / 1000);
 
       setTimeLeft(`Starts in ${h}h ${m}m ${s}s`);
+      return false;
     };
 
-    calculateTimeLeft(); // Initial call
-    const timer = setInterval(calculateTimeLeft, 1000);
+    if (calculateTimeLeft()) return;
+
+    const timer = setInterval(() => {
+      if (calculateTimeLeft()) {
+        clearInterval(timer);
+      }
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [date, time, status]);

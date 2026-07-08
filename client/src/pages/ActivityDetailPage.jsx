@@ -93,9 +93,9 @@ const ActivityDetailPage = () => {
     };
   }, [socket, id]);
 
-  const fetchActivity = async () => {
+  const fetchActivity = async (isBackground = false) => {
     try {
-      setLoading(true);
+      if (!isBackground) setLoading(true);
       const res = await getActivityById(id);
       setActivity(res.data.activity);
       setParticipants(res.data.participants);
@@ -104,7 +104,7 @@ const ActivityDetailPage = () => {
       toast.error('Activity not found');
       navigate('/feed');
     } finally {
-      setLoading(false);
+      if (!isBackground) setLoading(false);
     }
   };
 
@@ -340,7 +340,7 @@ const ActivityDetailPage = () => {
                     date={activity.date}
                     time={activity.time}
                     status={activity.status}
-                    onExpire={fetchActivity}
+                    onExpire={() => fetchActivity(true)}
                   />
                 )}
               </div>
