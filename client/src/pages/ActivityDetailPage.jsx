@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 import {
   MapPin, Clock, Calendar, Users, Crown, Pencil, Trash2,
-  MessageCircle, Send, AlertTriangle, UserMinus, ChevronLeft, Flag, Copy, Lock
+  MessageCircle, Send, AlertTriangle, UserMinus, ChevronLeft, Flag, Copy, Lock, Share2
 } from 'lucide-react';
 import {
   getActivityById,
@@ -244,6 +244,30 @@ const ActivityDetailPage = () => {
     toast.success('Crew Code copied!');
   };
 
+  const handleShare = async () => {
+    const url = window.location.href;
+    let text = `Join my ${activity.category} activity "${activity.title}" on CrewUp!`;
+    
+    if (activity.visibility === 'Private') {
+      text += `\n\nIt's a private crew! Use invite code: ${activity.crewCode} to join.`;
+    }
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'CrewUp Activity',
+          text: text,
+          url: url
+        });
+      } catch (err) {
+        console.log('Error sharing:', err);
+      }
+    } else {
+      navigator.clipboard.writeText(`${text}\n\nLink: ${url}`);
+      toast.success('Activity info copied to clipboard!');
+    }
+  };
+
   if (loading) return <ActivityDetailSkeleton />;
 
   if (!activity) return null;
@@ -267,14 +291,23 @@ const ActivityDetailPage = () => {
 
   return (
     <div className="page-container max-w-5xl">
-      {/* Back Button */}
-      <button
-        onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors mb-6 font-medium text-sm"
-      >
-        <ChevronLeft className="w-4 h-4" />
-        Back to Feed
-      </button>
+      {/* Top Action Bar */}
+      <div className="flex items-center justify-between mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors font-medium text-sm"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          Back
+        </button>
+        <button
+          onClick={handleShare}
+          className="flex items-center gap-1.5 text-slate-600 hover:text-primary-600 bg-white border border-slate-200 hover:border-primary-200 px-3 py-1.5 rounded-lg shadow-sm transition-all text-sm font-medium"
+        >
+          <Share2 className="w-4 h-4" />
+          Share Activity
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main */}
