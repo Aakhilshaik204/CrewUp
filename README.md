@@ -1,14 +1,15 @@
 <div align="center">
-  <img src="./client/public/logo.jpeg" alt="CrewUp Logo" width="180" />
+  <img src="./client/public/logo.jpeg" alt="CrewUp Logo" width="150" style="border-radius: 20px; margin-bottom: 20px;" />
   <h1>🚀 CrewUp</h1>
-  <p><strong>The Ultimate SRM AP Sports, Gaming & Equipment Matchmaking Platform</strong></p>
+  <p><strong>The Ultimate Campus Matchmaking Platform for Sports, Gaming & Gear</strong></p>
   
   <p>
-    <img src="https://img.shields.io/badge/React-18.x-blue.svg" alt="React" />
-    <img src="https://img.shields.io/badge/Node.js-Express-green.svg" alt="Node.js" />
-    <img src="https://img.shields.io/badge/MongoDB-Atlas-success.svg" alt="MongoDB" />
-    <img src="https://img.shields.io/badge/Socket.io-Realtime-black.svg" alt="Socket.io" />
-    <img src="https://img.shields.io/badge/License-Proprietary-red.svg" alt="Proprietary License" />
+    <img src="https://img.shields.io/badge/React-18.x-61DAFB.svg?logo=react&logoColor=black" alt="React" />
+    <img src="https://img.shields.io/badge/Vite-PWA-646CFF.svg?logo=vite&logoColor=white" alt="Vite PWA" />
+    <img src="https://img.shields.io/badge/Node.js-Express-339933.svg?logo=nodedotjs&logoColor=white" alt="Node.js" />
+    <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248.svg?logo=mongodb&logoColor=white" alt="MongoDB" />
+    <img src="https://img.shields.io/badge/Socket.io-Realtime-010101.svg?logo=socketdotio&logoColor=white" alt="Socket.io" />
+    <img src="https://img.shields.io/badge/Auth-Clerk-6C47FF.svg?logo=clerk&logoColor=white" alt="Clerk" />
   </p>
 </div>
 
@@ -16,47 +17,49 @@
 
 ## 📖 Table of Contents
 - [About CrewUp](#-about-crewup)
-- [Key Features](#-key-features)
-- [Technology Stack](#-technology-stack)
-- [Architecture & Folder Structure](#-architecture--folder-structure)
-- [Getting Started (Local Development)](#-getting-started-local-development)
-- [Environment Variables](#-environment-variables)
-- [API & Socket Overview](#-api--socket-overview)
-- [License & Copyright](#-license--copyright)
+- [✨ Key Features](#-key-features)
+- [🛠️ Technology Stack](#-technology-stack)
+- [📂 Architecture & Folder Structure](#-architecture--folder-structure)
+- [🚀 Getting Started](#-getting-started-local-development)
+- [🔑 Environment Variables](#-environment-variables)
+- [⚖️ License & Copyright](#-license--copyright)
 
 ---
 
 ## 🎯 About CrewUp
 
-**CrewUp** is an exclusive, highly-interactive campus platform designed exclusively to connect SRM AP students for sports, gaming, and equipment sharing. It completely eliminates the friction of finding players on campus—no more begging in WhatsApp groups or struggling to find that 11th player for a cricket match or a 4th player for a BGMI squad.
+**CrewUp** is an exclusive, highly-interactive platform designed to connect SRM AP students for sports, gaming, and equipment sharing. It eliminates the friction of finding players on campus—no more begging in WhatsApp groups or struggling to find that 11th player for a cricket match or a 4th player for a BGMI squad.
+
+Built as a lightning-fast **Progressive Web App (PWA)**, CrewUp feels like a native mobile application, complete with real-time sockets, rich chat, and push notifications.
 
 ---
 
 ## ✨ Key Features
 
 ### 🏏 1. Activity Hosting & Matchmaking
-- **Create Activities**: Users can host sports matches (Cricket, Football, Basketball, etc.) or gaming lobbies (VALORANT, BGMI, FIFA).
-- **Categorization**: Visual tags and emojis make scanning the Feed intuitive.
-- **Player Limits**: Activities cap at a set number of players. Once full, the status updates to `Full` automatically.
+- **Create Activities**: Host sports matches (Cricket, Football, Basketball, etc.) or gaming lobbies (VALORANT, BGMI, FIFA).
+- **Player Limits**: Activities cap at a set number of players. Once full, the status automatically updates to `Full`.
+- **Private Crews**: Host secret events using 6-character alphanumeric invite codes.
+- **WhatsApp Integration**: Deep-linked native web-sharing formatted perfectly for WhatsApp and Telegram.
 
 ### 💬 2. Live Squad Chat (Socket.io)
 - **Instant Integration**: The moment a user joins an activity, they are granted access to a real-time, isolated chat room for that specific squad.
 - **Rich Chat**: Chat UI features automatic scrolling, timestamping, and instant delivery without page reloads.
 
-### 🎒 3. Peer-to-Peer Borrow & Lend (Equipment)
-- **Equipment Requests**: Users can broadcast requests to the feed to borrow specific gear (e.g., "Need a Cricket Bat for 2 hours").
-- **Acceptance Flow**: Other students can instantly accept the request to lend their item, creating a seamless micro-sharing economy on campus.
-
-### 🎮 4. Gaming Profiles & Stats
+### 🎮 3. Gaming Profiles & Stats
 - **In-Game Identifiers**: Gamers can attach their in-game IGNs (In-Game Names) and current Ranks to their profile.
 - **Squad Clarity**: When joining a gaming lobby, the host can instantly see the rank and IGN of the people joining.
 
-### 🔐 5. Private Crews
-- **Secret Invite Codes**: Hosts can mark an activity as `Private`. Private activities do not show up on the public feed.
-- **Direct Invites**: Only users with the 6-character unique alphanumeric invite code can join.
+### 👑 4. Advanced Admin Dashboard
+- **Total Moderation Control**: Admins can view all users, activities, and platform statistics.
+- **Instant Ban Hammer**: Admins can instantly ban users. Banned users are aggressively logged out of their current active sessions globally via Clerk integration and blocked at the API level.
 
-### 🔔 6. Real-time Notifications & Toast Alerts
-- Live push notifications in the app navigation bar when someone joins your activity, requests your gear, or when an activity is starting soon.
+### 📱 5. Progressive Web App (PWA)
+- **Installable**: Users can install CrewUp directly to their iOS/Android home screen.
+- **Native Feel**: Features a custom branded splash screen, offline caching, and native OS share drawers.
+
+### 🎒 6. Peer-to-Peer Borrow & Lend (Equipment)
+- **Micro-Sharing Economy**: Users can broadcast requests to the feed to borrow specific gear (e.g., "Need a Cricket Bat for 2 hours"), which others can instantly accept.
 
 ---
 
@@ -64,21 +67,20 @@
 
 CrewUp is built using a modern, scalable MERN-stack architecture enhanced with WebSockets:
 
-### Frontend
+**Frontend**
 - **Framework**: React 18 (Bootstrapped with Vite for instant HMR)
+- **PWA**: `vite-plugin-pwa` for manifest generation and service workers
 - **Styling**: Tailwind CSS v3
-- **Animations**: Framer Motion (page transitions, micro-interactions, layout animations)
+- **Animations**: Framer Motion (page transitions, micro-interactions)
 - **Icons**: Lucide React
 - **Authentication**: Clerk (Google OAuth, Email Magic Links)
-- **Routing**: React Router v6
 
-### Backend
+**Backend**
 - **Server**: Node.js & Express.js
-- **Database**: MongoDB Atlas
-- **ODM**: Mongoose
+- **Database**: MongoDB Atlas (Mongoose ODM)
 - **Real-time Engine**: Socket.io
 - **Security**: Helmet, CORS, Express-Rate-Limit
-- **Cron Jobs**: Node-cron (for automated activity cleanups and status changes)
+- **Cron Jobs**: Node-cron (for automated activity cleanups)
 
 ---
 
@@ -86,29 +88,24 @@ CrewUp is built using a modern, scalable MERN-stack architecture enhanced with W
 
 ```text
 CrewUp/
-├── client/                     # Frontend Application
-│   ├── public/                 # Static assets (3D icons, logo)
+├── client/                     # Frontend Vite + React + PWA Application
+│   ├── public/                 # Static assets and PWA icons
 │   ├── src/
-│   │   ├── api/                # Axios wrappers for modular API calls
+│   │   ├── api/                # Axios interceptors (with auto-ban logout logic)
 │   │   ├── components/         # Reusable UI components
-│   │   │   ├── activity/       # Activity cards and detail views
-│   │   │   ├── common/         # Spinners, Skeletons, Modals
-│   │   │   └── layout/         # Navbar, Footer, Bento Grids
 │   │   ├── contexts/           # React Context (Socket.io, Notifications)
-│   │   ├── hooks/              # Custom hooks (e.g., useSyncUser)
-│   │   ├── pages/              # Primary Route Views
-│   │   └── utils/              # Constants, helpers, date formatters
+│   │   ├── pages/              # Primary Route Views (Auth, Feed, Admin, etc.)
+│   │   └── utils/              # Constants, helpers, formatting
 │   ├── index.css               # Tailwind directives
-│   └── vite.config.js
+│   └── vite.config.js          # Vite & PWA Manifest Configuration
 │
 ├── server/                     # Backend API & WebSocket Server
 │   ├── config/                 # Database initialization
-│   ├── controllers/            # Core business logic for routes
-│   ├── middleware/             # Auth guards (Clerk), Error Handlers, Admin checks
+│   ├── controllers/            # Core business logic (Admin, Activities, Users)
+│   ├── middleware/             # Auth guards (Clerk Auth), Error Handlers
 │   ├── models/                 # Mongoose Database Schemas
 │   ├── routes/                 # Express REST endpoint definitions
 │   ├── socket/                 # Socket.io event listeners & emitters
-│   ├── utils/                  # Server-side helpers
 │   ├── cron.js                 # Scheduled background tasks
 │   └── index.js                # Server entry point
 │
@@ -127,39 +124,23 @@ CrewUp/
 
 ### 1. Backend Setup
 ```bash
-# Navigate to the backend directory
 cd server
-
-# Install dependencies
 npm install
-
-# Create environment file
 cp .env.example .env
-
-# Start the development server (runs on port 5000)
 npm run dev
 ```
 
 ### 2. Frontend Setup
 ```bash
-# Navigate to the frontend directory
 cd client
-
-# Install dependencies
 npm install
-
-# Create environment file
 cp .env.example .env
-
-# Start the Vite development server (runs on port 5173)
 npm run dev
 ```
 
 ---
 
 ## 🔑 Environment Variables
-
-To run this project, you will need to configure the following environment variables.
 
 ### `server/.env`
 | Variable | Description |
@@ -168,7 +149,7 @@ To run this project, you will need to configure the following environment variab
 | `MONGODB_URI` | Your MongoDB Atlas connection string |
 | `CLERK_SECRET_KEY` | Secret Key from your Clerk Dashboard |
 | `CLERK_PUBLISHABLE_KEY`| Publishable Key from your Clerk Dashboard |
-| `CLIENT_URL` | URL of your frontend (Default: http://localhost:5173) |
+| `CLIENT_URL` | URL of your frontend |
 | `NODE_ENV` | Set to `development` or `production` |
 | `ADMIN_EMAILS` | Comma-separated list of admin email addresses |
 
@@ -176,24 +157,7 @@ To run this project, you will need to configure the following environment variab
 | Variable | Description |
 |----------|-------------|
 | `VITE_CLERK_PUBLISHABLE_KEY` | Publishable Key from your Clerk Dashboard |
-| `VITE_API_URL` | URL of your backend (Default: http://localhost:5000) |
-
----
-
-## 📡 API & Socket Overview
-
-### Core REST Endpoints
-- **`GET /api/activities`**: Fetches paginated, filterable feed of activities.
-- **`POST /api/activities`**: Creates a new activity.
-- **`POST /api/activities/:id/join`**: Joins an activity and assigns a spot.
-- **`GET /api/requests`**: Fetches the borrow/lend request feed.
-- **`POST /api/requests`**: Broadcasts a new equipment request.
-- **`PUT /api/requests/:id/status`**: Accepts or completes an equipment request.
-
-### WebSocket Events
-- **`join_activity`**: Connects a client to a specific activity's chat room.
-- **`send_message`**: Emits a chat message to the room.
-- **`receive_message`**: Listens for incoming chat messages in real-time.
+| `VITE_API_URL` | URL of your backend |
 
 ---
 
