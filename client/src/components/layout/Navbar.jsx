@@ -56,9 +56,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center group hover:opacity-80 transition-opacity h-16 overflow-hidden">
-            <img src="/logo.jpeg" alt="CrewUp Logo" className="h-16 w-auto object-contain scale-[1.7] origin-left mix-blend-multiply" />
-            <span className="hidden sm:inline-block ml-20 bg-orange-100 text-orange-600 text-[10px] font-black px-2 py-0.5 rounded-full border border-orange-200 shadow-sm relative -top-0.5">SRM AP</span>
+          <Link to="/" className="flex items-center group hover:opacity-80 transition-opacity">
+            <img src="/logo.jpeg" alt="CrewUp Logo" className="h-16 w-auto object-contain scale-[1.8] origin-left mix-blend-multiply" />
+            <span className="hidden sm:inline-block ml-24 bg-orange-100 text-orange-600 text-[10px] font-black px-2 py-0.5 rounded-full border border-orange-200 shadow-sm relative -top-0.5">SRM AP</span>
           </Link>
 
           {/* Desktop Nav Links */}
