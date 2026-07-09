@@ -250,7 +250,7 @@ export const cancelActivity = async (req, res, next) => {
 // POST /api/activities/:id/join
 export const joinActivity = async (req, res, next) => {
   try {
-    const { inGameId, rank } = req.body;
+    const { inGameId, inGameCode, rank } = req.body;
     const activity = await Activity.findById(req.params.id);
     if (!activity) return res.status(404).json({ success: false, message: 'Activity not found' });
 
@@ -283,7 +283,7 @@ export const joinActivity = async (req, res, next) => {
       const lastInWaitlist = await Waitlist.findOne({ activity: activity._id }).sort({ position: -1 });
       const position = lastInWaitlist ? lastInWaitlist.position + 1 : 1;
 
-      await Waitlist.create({ activity: activity._id, user: req.user._id, position, inGameId, rank });
+      await Waitlist.create({ activity: activity._id, user: req.user._id, position, inGameId, inGameCode, rank });
 
       // Notify host
       await createNotification({
@@ -298,7 +298,7 @@ export const joinActivity = async (req, res, next) => {
     }
 
     // Join activity
-    await Participant.create({ activity: activity._id, user: req.user._id, inGameId, rank });
+    await Participant.create({ activity: activity._id, user: req.user._id, inGameId, inGameCode, rank });
     activity.currentPlayers += 1;
 
     if (activity.currentPlayers >= activity.maxPlayers) {

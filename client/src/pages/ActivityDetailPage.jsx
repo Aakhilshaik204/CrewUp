@@ -56,7 +56,7 @@ const ActivityDetailPage = () => {
 
   const [mongoUser, setMongoUser] = useState(null);
   const [showJoinModal, setShowJoinModal] = useState(false);
-  const [joinForm, setJoinForm] = useState({ inGameId: '', rank: '' });
+  const [joinForm, setJoinForm] = useState({ inGameId: '', inGameCode: '', rank: '' });
 
   useEffect(() => {
     if (isSignedIn) {
@@ -124,8 +124,8 @@ const ActivityDetailPage = () => {
       if (mongoUser?.gamingProfiles) {
         const profile = mongoUser.gamingProfiles.find(p => p.game === activity.category);
         if (profile) {
-          setJoinForm({ inGameId: profile.inGameId, rank: profile.rank || '' });
-          toast.success(`Autofilled IGN for ${activity.category}!`, { icon: '🎮' });
+          setJoinForm({ inGameId: profile.inGameId, inGameCode: profile.inGameCode || '', rank: profile.rank || '' });
+          toast.success(`Autofilled profile for ${activity.category}!`, { icon: '🎮' });
         }
       }
       setShowJoinModal(true);
@@ -454,8 +454,13 @@ const ActivityDetailPage = () => {
                           <span className="text-xs text-slate-400">{p.user.branch} · {p.user.year}</span>
                         )}
                         {p.inGameId && (
-                          <div className="text-xs text-primary-600 font-medium mt-0.5">
-                            IGN: {p.inGameId} {p.rank && <span className="text-slate-400 font-normal">| {p.rank}</span>}
+                          <div className="mt-0.5">
+                            <div className="text-xs text-primary-600 font-medium">
+                              IGN: {p.inGameId} {p.rank && <span className="text-slate-400 font-normal">| {p.rank}</span>}
+                            </div>
+                            {p.inGameCode && (
+                              <div className="text-[10px] text-slate-400 font-mono mt-0.5">ID: {p.inGameCode}</div>
+                            )}
                           </div>
                         )}
                       </div>
@@ -565,9 +570,14 @@ const ActivityDetailPage = () => {
                       <div>
                         <span className="text-sm text-gray-300 block">{w.user?.name}</span>
                         {w.inGameId && (
-                          <span className="text-[10px] text-primary-400 block">
-                            IGN: {w.inGameId} {w.rank && <span className="text-slate-500">| {w.rank}</span>}
-                          </span>
+                          <div className="mt-0.5">
+                            <span className="text-[10px] text-primary-400 block">
+                              IGN: {w.inGameId} {w.rank && <span className="text-slate-500">| {w.rank}</span>}
+                            </span>
+                            {w.inGameCode && (
+                              <span className="text-[10px] text-slate-500 block font-mono">ID: {w.inGameCode}</span>
+                            )}
+                          </div>
                         )}
                       </div>
                     </div>
@@ -756,14 +766,24 @@ const ActivityDetailPage = () => {
               </p>
               <form onSubmit={submitJoin} className="space-y-4">
                 <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase block mb-1">In-Game ID / IGN *</label>
+                  <label className="text-xs font-bold text-slate-500 uppercase block mb-1">In-Game Name *</label>
                   <input
                     type="text"
                     required
                     value={joinForm.inGameId}
                     onChange={(e) => setJoinForm(prev => ({ ...prev, inGameId: e.target.value }))}
                     className="input-field"
-                    placeholder="e.g. PlayerOne#1234"
+                    placeholder="e.g. PlayerOne"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-bold text-slate-500 uppercase block mb-1">In-Game ID (Numeric - Optional)</label>
+                  <input
+                    type="text"
+                    value={joinForm.inGameCode}
+                    onChange={(e) => setJoinForm(prev => ({ ...prev, inGameCode: e.target.value }))}
+                    className="input-field"
+                    placeholder="e.g. 5123456789"
                   />
                 </div>
                 <div>

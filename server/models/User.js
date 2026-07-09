@@ -35,12 +35,10 @@ const userSchema = new mongoose.Schema(
     interests: {
       sports: {
         type: [String],
-        enum: ['Cricket', 'Football', 'Basketball', 'Volleyball', 'Badminton', 'Chess', 'Carrom'],
         default: [],
       },
       gaming: {
         type: [String],
-        enum: ['BGMI', 'Valorant', 'Free Fire', 'COD Mobile', 'EA FC'],
         default: [],
       },
     },
@@ -54,6 +52,11 @@ const userSchema = new mongoose.Schema(
           type: String,
           required: true,
           trim: true,
+        },
+        inGameCode: {
+          type: String,
+          trim: true,
+          default: '',
         },
         rank: {
           type: String,

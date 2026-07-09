@@ -28,7 +28,13 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const message = error.response?.data?.message || 'Something went wrong';
+    let message = error.response?.data?.message || 'Something went wrong';
+    
+    // Append detailed validation errors if they exist
+    const errors = error.response?.data?.errors;
+    if (errors && Array.isArray(errors)) {
+      message = `${message}: ${errors.join(', ')}`;
+    }
     
     // Automatically sign out banned users
     if (error.response?.status === 403 && message.toLowerCase().includes('banned')) {

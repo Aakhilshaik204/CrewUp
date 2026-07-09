@@ -16,6 +16,10 @@ const participantSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    inGameCode: {
+      type: String,
+      trim: true,
+    },
     rank: {
       type: String,
       trim: true,

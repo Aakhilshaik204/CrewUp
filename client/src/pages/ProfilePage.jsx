@@ -189,6 +189,9 @@ const ProfilePage = () => {
                     <div key={i} className="bg-white/10 border border-white/10 rounded-2xl p-4 hover:bg-white/15 transition-colors">
                       <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{gp.game}</div>
                       <div className="font-display font-black text-xl tracking-tight truncate">{gp.inGameId}</div>
+                      {gp.inGameCode && (
+                        <div className="text-xs font-bold text-slate-300 mt-1 font-mono">{gp.inGameCode}</div>
+                      )}
                       {gp.rank && (
                         <div className="inline-block bg-orange-500/20 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded-md mt-2 uppercase tracking-wider border border-orange-500/20">
                           {gp.rank}

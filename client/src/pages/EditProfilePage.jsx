@@ -165,7 +165,7 @@ const EditProfilePage = () => {
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   <div>
                     <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">Game *</label>
                     <select
@@ -183,7 +183,7 @@ const EditProfilePage = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">IGN *</label>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">In-Game Name *</label>
                     <input
                       type="text"
                       value={profile.inGameId}
@@ -193,7 +193,21 @@ const EditProfilePage = () => {
                         setForm({ ...form, gamingProfiles: newProfiles });
                       }}
                       required
-                      placeholder="PlayerOne"
+                      placeholder="e.g. PlayerOne"
+                      className="input-field py-2 text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">In-Game ID</label>
+                    <input
+                      type="text"
+                      value={profile.inGameCode}
+                      onChange={(e) => {
+                        const newProfiles = [...form.gamingProfiles];
+                        newProfiles[idx].inGameCode = e.target.value;
+                        setForm({ ...form, gamingProfiles: newProfiles });
+                      }}
+                      placeholder="e.g. 5123456789"
                       className="input-field py-2 text-sm"
                     />
                   </div>
