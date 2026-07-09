@@ -19,8 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       afterSignOutUrl="/"
       signInFallbackRedirectUrl="/dashboard"
       signUpFallbackRedirectUrl="/dashboard"
-      signInForceRedirectUrl="/dashboard"
-      signUpForceRedirectUrl="/dashboard"
       appearance={{
         layout: {
           logoImageUrl: '/logo.jpeg',

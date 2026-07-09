@@ -1,5 +1,5 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { useUser } from '@clerk/clerk-react';
+import { Outlet } from 'react-router-dom';
+import { useUser, RedirectToSignIn } from '@clerk/clerk-react';
 import Spinner from './Spinner';
 
 const ProtectedRoute = () => {
@@ -14,7 +14,7 @@ const ProtectedRoute = () => {
   }
 
   if (!isSignedIn) {
-    return <Navigate to="/" replace />;
+    return <RedirectToSignIn signInUrl="/sign-in" />;
   }
 
   return <Outlet />;
